@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124164346) do
+ActiveRecord::Schema.define(version: 20160125110930) do
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["project_id"], name: "index_likes_on_project_id"
+  add_index "likes", ["user_id", "project_id"], name: "index_likes_on_user_id_and_project_id", unique: true
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -21,8 +39,6 @@ ActiveRecord::Schema.define(version: 20160124164346) do
   end
 
   add_index "relationships", ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
-  add_index "relationships", ["following_id"], name: "index_relationships_on_following_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

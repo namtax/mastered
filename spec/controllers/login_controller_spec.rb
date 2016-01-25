@@ -7,11 +7,14 @@ RSpec.describe LoginController, type: :controller do
     let(:opts)     { { username: 'john', password: 'letmein', session: anything } }
 
     context 'valid credentials' do
-      before { allow(LoginUserService).to receive(:run).with(opts).and_return(service) }
+      before do
+        allow(LoginUserService).to receive(:run).with(opts).and_return(service)
+        session[:user_id] = john.id
+      end
 
       it 'redirects to users path' do
         post :create, { username: 'john', password: 'letmein' }
-        expect(response).to redirect_to(users_path)
+        expect(response).to redirect_to('/users/john')
       end
     end
 

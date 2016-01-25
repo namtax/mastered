@@ -1,7 +1,9 @@
 module Layouts
   class Application < ::Stache::Mustache::View
     def flashes
-      content_tag(:p, flash[:success], :class => "flash notice")
+      flash.map do |f|
+        content_tag(:p, f.last, :class => f.first)
+      end.join
     end
   end
 end

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     outcome = FollowUserService.run(user: them, follower: you)
 
     if outcome.valid?
+      flash[:success] = "You are now following #{them.name}"
       redirect_to action: 'index'
     end
   end

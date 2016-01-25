@@ -15,5 +15,10 @@ RSpec.describe UsersController, type: :controller do
       post :follow, { id: 'john', user_id: nina.id }
       expect(response).to redirect_to(users_path)
     end
+
+    it 'redirects to users path' do
+      post :follow, { id: 'john', user_id: nina.id }
+      expect(flash[:success]).to eq 'You are now following nina'
+    end
   end
 end

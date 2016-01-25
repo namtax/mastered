@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160125110930) do
   add_index "relationships", ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "username"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

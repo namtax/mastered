@@ -1,6 +1,6 @@
 describe User do
-  subject       { User.create(username: 'molly') }
-  let(:john)    { User.create(username: 'john') }
+  subject       { User.create(name: 'molly') }
+  let(:john)    { User.create(name: 'john') }
   let(:project) { Project.create(name: 'Take over the world') }
 
   describe '#followers' do

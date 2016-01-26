@@ -6,6 +6,10 @@
       </div>
       <div class='col-md-9 activity'>
         <h2>{{ name }}</h2>
+
+        {{#no_followers}}
+          Find some users to follow <a href='/users'>click here</a>
+        {{/no_followers}}
         <ul>
           {{#activities}}
             <li>{{ . }}</li>

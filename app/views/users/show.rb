@@ -24,5 +24,9 @@ module Users
     def initial
       name[0]
     end
+
+    def no_followers
+      @user.followers.empty?
+    end
   end
 end

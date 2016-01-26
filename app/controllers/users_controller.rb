@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:id])
+    @user      = User.find_by(name: params[:id])
+    @activity  = FetchActivityService.run(user: @user).result
   end
 
   def follow

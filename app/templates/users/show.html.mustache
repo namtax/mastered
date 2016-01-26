@@ -6,7 +6,12 @@
       </div>
       <div class='col-md-9 activity'>
         <h2>{{ name }}</h2>
-        <h3> Activity</h3>
+        <ul>
+          {{#activities}}
+            <li>{{ . }}</li>
+          {{/activities}}
+        </ul>
+        <h3>  </h3>
       </div>
     </div>
   </div>

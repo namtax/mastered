@@ -1,11 +1,16 @@
 <div class='row'>
-  <h2>{{ name }}</h2>
-</div>
-
-<div class='row'>
   <div class='col-md-9'>
-    <h3> Activity</h3>
+    <div class='row'>
+      <div class='col-md-3 user_image'>
+        {{ initial }}
+      </div>
+      <div class='col-md-9 activity'>
+        <h2>{{ name }}</h2>
+        <h3> Activity</h3>
+      </div>
+    </div>
   </div>
+
   <div class='col-md-3 sidebar'>
     <a class="btn btn-default btn-lg" href="{{ new_project_path }}">New Project</a>
     <h3> Projects </h3>

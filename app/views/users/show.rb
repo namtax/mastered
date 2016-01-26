@@ -7,5 +7,9 @@ module Users
     def projects
       @user.projects.map(&:as_json)
     end
+
+    def initial
+      name[0]
+    end
   end
 end

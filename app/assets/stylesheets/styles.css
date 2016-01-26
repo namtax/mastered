@@ -1,0 +1,47 @@
+/* GENERAL */
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+  font-size: 6em;
+}
+
+[class*='col-'] {
+  margin: 0;
+  padding: 0;
+}
+
+/* SHARED */
+
+.usernav {
+  border-bottom: 1px solid lightblue;
+}
+
+.usernav ul{
+  padding: 0;
+}
+
+.usernav ul li{
+  float: left;
+  display: inline;
+  margin-right: 10px;
+}
+
+.sidebar {
+  border-left: 1px solid lightgrey;
+  padding-left: 22px;
+}
+
+
+/* USER */
+.user_image {
+  background-color: #538cc6;
+  font-size: 10em;
+  text-align: center;
+}
+
+.activity{
+  padding-left: 10px;
+}

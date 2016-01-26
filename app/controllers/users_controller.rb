@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :require_login
+
   def index
-    @users = User.all
+    @users = current_user.users_to_follow
   end
 
   def show

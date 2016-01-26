@@ -3,14 +3,8 @@
 
   <form action='/users/namtax/follow' method='post'>
     {{#usernames}}
-      <div class='row'>
-        <div class='col-md-3'>
-         {{ name }}
-        </div>
-        <div class='col-md-9'>
-          <button name="user_id" value="{{ id }}" class="btn btn-primary">Follow</button>
-        </div>
-      </div>
+      {{ name }}
+      <button name="user_id" value="{{ id }}" class="btn btn-primary">Follow</button>
     {{/usernames}}
   </form>
 </div>

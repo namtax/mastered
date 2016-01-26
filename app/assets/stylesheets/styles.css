@@ -27,6 +27,12 @@ h1 {
   float: left;
   display: inline;
   margin-right: 10px;
+  padding: 4px;
+}
+
+.usernav .logout{
+  margin: 0;
+  padding: 0;
 }
 
 .sidebar {

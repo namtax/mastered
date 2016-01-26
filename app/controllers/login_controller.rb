@@ -6,12 +6,13 @@ class LoginController < ApplicationController
     if outcome.valid? && outcome.result
       redirect_to user_path(id: current_user.name)
     else
-      flash[:warning] = 'Please supply valid login credentials'
+      flash.now[:warning] = 'Please supply valid login credentials'
       render action: 'new'
     end
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id])
+  def destroy
+    session.delete(:user_id)
+    redirect_to root_path
   end
 end

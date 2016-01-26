@@ -9,15 +9,31 @@
 </head>
 <body>
 <div class='container'>
-  {{{ flashes }}}
-  <div class='row usernav'>
-    <div class='col-md-6'>
-      <ul>
-        <li>Hey {{ username }}</li>
-        <li><a href="{{ user_path }}"> Home </a></li>
-      </ul>
+  {{#notices}}
+    <div class='row alert alert-info'>
+      {{{ flashes }}}
     </div>
-  </div>
+  {{/notices}}
+
+    <div class='row usernav'>
+      <div class='col-md-6'>
+        <form action='/logout' method='post'>
+          <ul>
+            {{#logged_in}}
+              <li>Hey {{ username }}</li>
+              <li><a href="{{ user_path }}"> Home </a></li>
+              <li><a href="{{ users_path }}"> Users to follow </a></li>
+              <li><button type="submit" class="btn btn-link logout">Logout</button></li>
+            {{/logged_in}}
+
+            {{#logged_out}}
+              <li><a href="{{ login_path }}"> Login </a></li>
+            {{/logged_out}}
+          </ul>
+        </form>
+      </div>
+    </div>
+
   <div class='row'>
     <h1>MasterSystem</h1>
   </div>

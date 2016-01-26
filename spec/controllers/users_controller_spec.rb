@@ -4,6 +4,8 @@ RSpec.describe UsersController, type: :controller do
     let!(:john)   { User.create(name: 'john') }
     let(:service) { double(valid?: true) }
 
+    before        { session[:user_id] = john.id }
+
     it 'delegates to service' do
       expect(FollowUserService).to receive(:run).with(user: nina, follower: john).and_return(service)
       post :follow, { id: 'john', user_id: nina.id }

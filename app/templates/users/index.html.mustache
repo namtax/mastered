@@ -1,7 +1,7 @@
 <div class='row'>
   <h2>Users</h2>
 
-  <form action='/users/namtax/follow' method='post'>
+  <form action="{{ follow_path }}" method='post'>
     {{#usernames}}
       {{ name }}
       <button name="user_id" value="{{ id }}" class="btn btn-primary">Follow</button>

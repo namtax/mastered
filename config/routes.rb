@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get  'login' => 'login#new'
   post 'login' => 'login#create'
 
-  resources :projects
+  resources :projects do
+    member do
+      post :favourite
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

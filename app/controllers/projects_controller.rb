@@ -14,6 +14,16 @@ class ProjectsController < ApplicationController
     @project = Project.find_by(name: params[:id])
   end
 
+  def favourite
+    project = Project.find_by(name: params[:id])
+    outcome = LikeProjectService.run(user: current_user, project_id: project.id)
+
+    if outcome.valid?
+      flash[:success] = "You added #{project.name} to your favourites"
+      redirect_to project_path
+    end
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id])
   end

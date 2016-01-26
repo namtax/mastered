@@ -27,4 +27,30 @@ RSpec.describe ProjectsController, type: :controller do
       end
     end
   end
+
+  describe 'POST favourite' do
+    let!(:john)    { User.create(name: name, password: password) }
+    let(:name)     { 'john' }
+    let(:password) { 'letmein' }
+    let!(:project) { Project.create(name: 'take over') }
+    let(:service)  { double(valid?: true) }
+
+    before do
+      session[:user_id] = john.id
+      allow(LikeProjectService).to receive(:run).with(user: john, project_id: project.id)
+        .and_return(service)
+    end
+
+    context 'valid input' do
+      it 'redirects to project page' do
+        post :favourite, { id: 'take over' }
+        expect(response).to redirect_to('/projects/take%20over')
+      end
+
+      it 'notifies user' do
+        post :favourite, { id: 'take over' }
+        expect(flash[:success]).to eq 'You added take over to your favourites'
+      end
+    end
+  end
 end

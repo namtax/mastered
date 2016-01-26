@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :require_login
+
   def create
     outcome = CreateProjectService.run(user: current_user, name: params[:name])
 
@@ -22,9 +24,5 @@ class ProjectsController < ApplicationController
       flash[:success] = "You added #{project.name} to your favourites"
       redirect_to project_path
     end
-  end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id])
   end
 end
